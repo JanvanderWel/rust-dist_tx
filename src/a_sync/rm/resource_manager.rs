@@ -4,7 +4,7 @@ use async_trait::async_trait;
 /// Interface of a resource manager, as required by a transaction manager.
 ///
 #[async_trait]
-pub trait ResourceManager: std::fmt::Debug + Send {
+pub trait ResourceManager: std::fmt::Debug + Send + Sync {
     /// Tells the server to start work on behalf of the given transaction branch.
     ///
     /// # Errors

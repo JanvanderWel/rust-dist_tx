@@ -13,7 +13,7 @@ use crate::{a_sync::rm::ResourceManager, XaError};
 ///
 ///
 #[async_trait]
-pub trait TransactionManager {
+pub trait TransactionManager: Send + Sync {
     /// Register a `ResourceManager`.
     ///
     /// Note that `Box<CResourceManager>` also implements `ResourceManager`, so you can hand in

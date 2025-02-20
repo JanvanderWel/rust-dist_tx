@@ -11,7 +11,7 @@ use log::trace;
 pub struct CRmWrapper<T>(pub T);
 
 #[async_trait]
-impl<T: CResourceManager + std::fmt::Debug + std::marker::Send> ResourceManager for CRmWrapper<T> {
+impl<T: CResourceManager + std::fmt::Debug + std::marker::Send + std::marker::Sync> ResourceManager for CRmWrapper<T> {
     async fn start(&mut self, id: XaTransactionId) -> Result<ReturnCode, RmError> {
         trace!("start() with {:?}", id);
         self.0.start(id, Flags::default()).await
